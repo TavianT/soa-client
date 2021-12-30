@@ -2,7 +2,9 @@ import Appbar from './Appbar'
 import Home from './Home'
 import Generateid from './Generateid'
 import Create from './Create';
+import Intent from './Intent'
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import '@fontsource/roboto/300.css';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
             </Route>
             <Route path='/create'>
               <Create></Create>
+            </Route>
+            <Route path='/check-intents'>
+              <Intent></Intent>
             </Route>
           </Switch>
         </div>

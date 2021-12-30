@@ -2,7 +2,9 @@ import OfferList from './OfferList';
 import useFetch from './useFetch';
 import { Typography } from '@material-ui/core';
 const Home = () => {
-    const { error, isPending, data: offers } = useFetch('http://localhost:8080/soa/api/offers')
+    const userId = localStorage.getItem("userId")
+    const OFFERS_URI = `http://localhost:8080/soa/api/offers?userId=${localStorage.getItem("userId")}`
+    const { error, isPending, data: offers } = useFetch(OFFERS_URI)
     return (
         <div>
             <Typography variant="h6" align="center">
