@@ -4,6 +4,7 @@ import { useState } from "react";
 const OfferList = ({offers}) => {
 
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     const submitIntent = (offer) => {
         const userId = localStorage.getItem("userId")
@@ -20,6 +21,8 @@ const OfferList = ({offers}) => {
         }).then((data) => {
             if("errorCode" in data) {
                 setError(data.message)
+            } else {
+                setSuccess("Successfully submitted travel intent")
             }
         })
     }
@@ -29,6 +32,10 @@ const OfferList = ({offers}) => {
                 <AlertTitle>Error</AlertTitle>
                 {error}
                 </Alert></div>}
+            {success && <div><Alert severity="success" onClose={() => setSuccess('')} variant="filled">
+                <AlertTitle>Success</AlertTitle>
+                {success}
+            </Alert></div>}
             <Grid
             container
             direction="column"

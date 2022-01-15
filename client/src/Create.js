@@ -33,6 +33,9 @@ const Create = () => {
                 setError(data.message)
             } else {
                 setSuccess(`Proposal submitted successfully with an id of ${data.msgId}`)
+                const proposal_storage_name = `${name}_${tripProposalDate}`
+                localStorage.setItem(proposal_storage_name, JSON.stringify(proposal))
+
             }
         })
 

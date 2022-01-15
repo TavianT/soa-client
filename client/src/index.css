@@ -33,3 +33,14 @@ body {
 .create {
   text-align: center;
 }
+
+.acknowledgement-list {
+  margin-top: 30px;
+  flex-grow: 1;
+}
+
+.acknowledgement-item {
+  min-width: 450px;
+  max-width: 450px;
+  text-align: center;
+}

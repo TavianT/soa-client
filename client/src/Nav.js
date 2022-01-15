@@ -11,7 +11,10 @@ const Nav = () => {
             New Proposal
         </Button>
         <Button color="inherit" component={Link} to="/check-intents">
-            Check Intents
+            Travel Intents
+        </Button>
+        <Button color="inherit" component={Link} to="/check-acknowledgements">
+            Acknowledgements
         </Button>
         </div>
      );

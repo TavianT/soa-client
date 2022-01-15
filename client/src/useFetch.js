@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { parseString, parseStringPromise } from 'xml2js';
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -10,10 +11,20 @@ const useFetch = (url) => {
 
       fetch(url, { signal: abortCont.signal })
       .then(res => {
-        // if (!res.ok) { // error coming back from server
-        //   throw Error(res.json().message);
-        // }
-        return res.json();
+        if (res.headers.get("Content-Type") === "application/xml") {
+          console.log("getting xml");
+          return res.text().then((text) => {
+            console.log(text);
+            return parseStringPromise(text).then((result) => {
+              console.log(result);
+              console.log(result.acknowledgements);
+              return result
+            })
+          })
+        } else {
+          return res.json();
+        }
+        
       })
       .then(data => {
         if ("errorCode" in data) {
